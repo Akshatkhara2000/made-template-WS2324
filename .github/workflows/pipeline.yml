@@ -30,4 +30,4 @@ jobs:
           chmod 600 $HOME/.kaggle/kaggle.json
 
       - name: Run MADE Pipeline
-        run: python project/pipeline.sh
+        run: python3 project/pipeline.py
