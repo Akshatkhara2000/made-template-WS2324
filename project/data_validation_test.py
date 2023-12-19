@@ -3,12 +3,7 @@ from sqlalchemy import create_engine
 import os
 import re
 import sqlite3
-import kaggle
-import requests
-# import opendatasets as od
-# import shutil
-# import zipfile
-import ipdb
+import opendatasets as od
 
 # class Test:
 def Test_file():
