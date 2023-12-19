@@ -18,7 +18,12 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
-          
+      
+      - name: Create kaggle.json
+        run: |
+          echo '{"username": "${{ secrets.KAGGLE_USERNAME }}", "key": "${{ secrets.KAGGLE_KEY }}"}' > $HOME/kaggle.json
+          ls -l $HOME
+      
       - name: Install Python dependencies
         run: 
           python -m pip install --upgrade pip
