@@ -1,0 +1,23 @@
+name: MADE Project Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  made-pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Kaggle
+        run: |
+          mkdir $HOME/.kaggle
+          echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > $HOME/.kaggle/kaggle.json
+          chmod 600 $HOME/.kaggle/kaggle.json
+
+      - name: Run MADE Pipeline
+        run: python3 /project/pipeline.py
