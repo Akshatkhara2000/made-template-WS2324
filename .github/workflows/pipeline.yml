@@ -25,7 +25,7 @@ jobs:
           
       - name: Setup Kaggle
         run: |
-          echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > kaggle.json
+          echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > /project/kaggle.json
           chmod 600 $HOME/.kaggle/kaggle.json
 
       - name: Run MADE Pipeline
