@@ -1,2 +1,2 @@
 #!/bin/bash
-python /project/data_validation_test.py
+python project/data_validation_test.py
