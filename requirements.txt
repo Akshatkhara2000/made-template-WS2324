@@ -1,5 +1,0 @@
-pip install pandas
-pip install sqlalchemy
-pip install kaggle
-pip install opendatasets
-pip install shutil
