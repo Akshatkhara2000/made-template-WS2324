@@ -22,7 +22,6 @@ jobs:
       - name: Create kaggle.json
         run: |
           echo '{"username": "${{ secrets.KAGGLE_USERNAME }}", "key": "${{ secrets.KAGGLE_KEY }}"}' > $HOME/kaggle.json
-          ls -l $HOME
       
       - name: Install Python dependencies
         run: 
