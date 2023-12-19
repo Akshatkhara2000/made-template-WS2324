@@ -18,6 +18,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
+          
       - name: Install Python dependencies
         run: 
           python -m pip install --upgrade pip
@@ -25,8 +26,8 @@ jobs:
           
       - name: Setup Kaggle
         run: |
-          echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > /project/kaggle.json
-          chmod 600 $HOME/.kaggle/kaggle.json
+          echo "machine kaggle.com login ${{ secrets.KAGGLE_USERNAME }} password ${{ secrets.KAGGLE_KEY }}" > ~/.netrc
+          chmod 600 ~/.netrc
 
       - name: Run MADE Pipeline
         run: 
