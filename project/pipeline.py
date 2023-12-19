@@ -66,7 +66,6 @@ def Zomato_banglore_1(dataframe):
     zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].str.replace('\D', '', regex=True)
     # zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].astype(int)
 
-    # import ipdb; ipdb.set_trace()
     return zomato_banglore_1_cleaned_df
 
     # # Remove All Letters from Strings
