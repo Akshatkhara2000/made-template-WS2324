@@ -25,9 +25,9 @@ jobs:
           pip install -r project/requirements.txt  # Replace with the path to your requirements file
           
       - name: Setup Kaggle
-        run: |
-          echo "machine kaggle.com login ${{ secrets.KAGGLE_USERNAME }} password ${{ secrets.KAGGLE_KEY }}" > ~/.netrc
-          chmod 600 ~/.netrc
+        run: echo "${{ secrets.KAGGLE_USERNAME }}:${{ secrets.KAGGLE_KEY }}" > .project/kaggle.json
+        env:
+          KAGGLE_CONFIG_DIR: project
 
       - name: Run MADE Pipeline
         run: 
