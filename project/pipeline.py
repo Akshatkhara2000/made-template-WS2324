@@ -55,10 +55,6 @@ def Zomato_banglore_1(dataframe):
     zomato_banglore_1_cleaned_df = dataframe
     zomato_banglore_1_cleaned_df.dropna(inplace=True)
     zomato_banglore_1_cleaned_df = zomato_banglore_1_cleaned_df.drop(["url", "address", "phone", "reviews_list", "menu_item"], axis='columns')
-    # def is_valid_ifopt(value):
-    #     pattern = r'^[a-zA-Z0-9]'
-    #     return pd.notna(value) and bool(re.match(pattern, str(value)))
-    # zomato_banglore_1_cleaned_df = zomato_banglore_1_cleaned_df[zomato_banglore_1_cleaned_df['IFOPT'].apply(is_valid_ifopt)]
 
     # Online_order and Book_table column cleaning
     zomato_banglore_1_cleaned = zomato_banglore_1_cleaned_df[zomato_banglore_1_cleaned_df['online_order'].isin(['Yes','No'])]
