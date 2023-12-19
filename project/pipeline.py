@@ -1,14 +1,10 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import os
-import re
 import sqlite3
 import kaggle
-import requests
 import opendatasets as od
 import shutil
-import zipfile
-import ipdb
 
 # class DataPipeline:
 
