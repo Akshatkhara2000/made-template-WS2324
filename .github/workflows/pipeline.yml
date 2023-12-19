@@ -21,7 +21,7 @@ jobs:
       
       - name: Create kaggle.json
         run: |
-          echo '{"username": "${{ secrets.KAGGLE_USERNAME }}", "key": "${{ secrets.KAGGLE_KEY }}"}' > project/kaggle.json
+          echo '{"username": "${{ secrets.KAGGLE_USERNAME }}", "key": "${{ secrets.KAGGLE_KEY }}"}' > kaggle.json
       
       - name: Install Python dependencies
         run: 
