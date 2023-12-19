@@ -31,3 +31,7 @@ jobs:
       - name: Run MADE Pipeline
         run: 
             bash project/pipeline.sh
+            
+      - name: Run MADE Pipeline
+        run: 
+            bash project/test.sh
