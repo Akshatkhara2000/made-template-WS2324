@@ -2,14 +2,12 @@ import pandas as pd
 from sqlalchemy import create_engine
 import os
 import sqlite3
-import kaggle
 import opendatasets as od
 import shutil
 
 # class DataPipeline:
 
 def download_csv_files():
-    kaggle.api.authenticate()
     dataset_path = os.path.join(os.getcwd(), "data")
     banglore_csv = os.path.join(os.getcwd(), "data/BangaloreZomatoData.csv")
 
