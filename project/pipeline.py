@@ -110,9 +110,6 @@ def Zomato_banglore_2(dataframe):
 
     return zomato_banglore_2_cleaned_df
 
-    # # Remove All Letters from Strings
-    # zomato_banglore_2_cleaned_df['my_column'] = zomato_banglore_2_cleaned_df['my_column'].str.replace('\D', '', regex=True)
-
     # # Remove All Numbers from Strings
     # zomato_banglore_2_cleaned_df['my_column'] = zomato_banglore_2_cleaned_df['my_column'].str.replace('\d+', '', regex=True)
 
