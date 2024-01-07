@@ -14,36 +14,36 @@ def download_csv_files():
     # Download Zomato Dataset 1
     source_path1 = os.path.join(os.getcwd(), "zomato-dataset")
     zomato_csv = os.path.join(os.getcwd(), "data/zomato.csv")
-    od.download('https://www.kaggle.com/datasets/rajeshrampure/zomato-dataset/data')
-    # Gather all files
-    allfiles = os.listdir(source_path1)
+    # od.download('https://www.kaggle.com/datasets/rajeshrampure/zomato-dataset/data')
+    # # Gather all files
+    # allfiles = os.listdir(source_path1)
     
-    # iterate on all files to move them to destination folder
-    for f in allfiles:
-        src_path = os.path.join(source_path1, f)
-        dst_path = os.path.join(dataset_path, f)
-        shutil.move(src_path, dst_path)
+    # # iterate on all files to move them to destination folder
+    # for f in allfiles:
+    #     src_path = os.path.join(source_path1, f)
+    #     dst_path = os.path.join(dataset_path, f)
+    #     shutil.move(src_path, dst_path)
 
     zomato_banglore_1 = pd.read_csv(zomato_csv)
     zomato_banglore_1_df = pd.DataFrame(zomato_banglore_1)
-    shutil.rmtree("zomato-dataset")
+    # shutil.rmtree("zomato-dataset")
 
     # Download Zomato Banglore Dataset 2
     source_path2 = os.path.join(os.getcwd(), "zomato-bangalore-restaurants-2022")
     banglore_csv = os.path.join(os.getcwd(), "data/BangaloreZomatoData.csv")
-    od.download('https://www.kaggle.com/datasets/vora1011/zomato-bangalore-restaurants-2022/data')
-    # Gather all files
-    allfiles = os.listdir(source_path2)
+    # od.download('https://www.kaggle.com/datasets/vora1011/zomato-bangalore-restaurants-2022/data')
+    # # Gather all files
+    # allfiles = os.listdir(source_path2)
     
-    # iterate on all files to move them to destination folder
-    for f in allfiles:
-        src_path = os.path.join(source_path2, f)
-        dst_path = os.path.join(dataset_path, f)
-        shutil.move(src_path, dst_path)
+    # # iterate on all files to move them to destination folder
+    # for f in allfiles:
+    #     src_path = os.path.join(source_path2, f)
+    #     dst_path = os.path.join(dataset_path, f)
+    #     shutil.move(src_path, dst_path)
     
     zomato_banglore_2 = pd.read_csv(banglore_csv)
     zomato_banglore_2_df = pd.DataFrame(zomato_banglore_2)
-    shutil.rmtree("zomato-bangalore-restaurants-2022")
+    # shutil.rmtree("zomato-bangalore-restaurants-2022")
     
     return zomato_banglore_1_df, zomato_banglore_2_df
 
