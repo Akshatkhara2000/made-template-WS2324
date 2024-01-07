@@ -81,8 +81,6 @@ def Zomato_database_file(dataframe):
 
 def Zomato_banglore_2(dataframe):
 
-    # import ipdb; ipdb.set_trace()
-
     zomato_banglore_2_cleaned_df = dataframe
 
     zomato_banglore_2_cleaned_df.dropna(inplace=True)
