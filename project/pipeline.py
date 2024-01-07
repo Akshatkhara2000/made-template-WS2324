@@ -67,16 +67,6 @@ def Zomato_banglore_1(dataframe):
     # zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].astype(int)
 
     return zomato_banglore_1_cleaned_df
-
-    # # Remove All Letters from Strings
-    # zomato_banglore_1_cleaned_df['my_column'] = zomato_banglore_1_cleaned_df['my_column'].str.replace('\D', '', regex=True)
-
-    # # Remove All Numbers from Strings
-    # zomato_banglore_1_cleaned_df['my_column'] = zomato_banglore_1_cleaned_df['my_column'].str.replace('\d+', '', regex=True)
-
-    # # Remove Special Characters
-    # zomato_banglore_1_cleaned_df['my_column'] = zomato_banglore_1_cleaned_df['my_column'].str.replace('\W', '', regex=True)
-
     
 def Zomato_database_file(dataframe):
     Zomato_banglore_cleaned = dataframe
