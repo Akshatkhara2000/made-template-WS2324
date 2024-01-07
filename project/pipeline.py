@@ -57,8 +57,8 @@ def Zomato_banglore_1(dataframe):
     zomato_banglore_1_cleaned_df = zomato_banglore_1_cleaned_df.drop(["url", "address", "phone", "reviews_list", "menu_item"], axis='columns')
 
     # Online_order and Book_table column cleaning
-    zomato_banglore_1_cleaned = zomato_banglore_1_cleaned_df[zomato_banglore_1_cleaned_df['online_order'].isin(['Yes','No'])]
-    zomato_banglore_1_cleaned = zomato_banglore_1_cleaned_df[zomato_banglore_1_cleaned_df['book_table'].isin(['Yes','No'])]
+    zomato_banglore_1_cleaned_df = zomato_banglore_1_cleaned_df[zomato_banglore_1_cleaned_df['online_order'].isin(['Yes','No'])]
+    zomato_banglore_1_cleaned_df = zomato_banglore_1_cleaned_df[zomato_banglore_1_cleaned_df['book_table'].isin(['Yes','No'])]
     
     # Rate column cleaning
     zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].str.replace('/5', '')
@@ -97,6 +97,27 @@ def Zomato_banglore_2(dataframe):
     zomato_banglore_2_cleaned_df = dataframe
 
     zomato_banglore_2_cleaned_df.dropna(inplace=True)
+
+    zomato_banglore_2_cleaned_df = zomato_banglore_2_cleaned_df.drop(["URL","Timing", "Full_Address", "PhoneNumber", "PeopleKnownFor"], axis='columns')
+    
+    # zomato_banglore_2_cleaned_df = zomato_banglore_2_cleaned_df.loc[zomato_banglore_2_cleaned_df['IsHomeDelivery'] == 1, 'IsHomeDelivery'] = "Yes"
+    for x in zomato_banglore_2_cleaned_df.index:
+        if zomato_banglore_2_cleaned_df.loc[x, "IsHomeDelivery"] == 1:
+            zomato_banglore_2_cleaned_df.loc[x, "IsHomeDelivery"] = "Yes"
+        elif zomato_banglore_2_cleaned_df.loc[x, "IsHomeDelivery"] == 0:
+            zomato_banglore_2_cleaned_df.loc[x, "IsHomeDelivery"] = "No"
+    
+    for x in zomato_banglore_2_cleaned_df.index:
+        if zomato_banglore_2_cleaned_df.loc[x, "isTakeaway"] == 1:
+            zomato_banglore_2_cleaned_df.loc[x, "isTakeaway"] = "Yes"
+        elif zomato_banglore_2_cleaned_df.loc[x, "isTakeaway"] == 0:
+            zomato_banglore_2_cleaned_df.loc[x, "isTakeaway"] = "No"
+    
+    for x in zomato_banglore_2_cleaned_df.index:
+        if zomato_banglore_2_cleaned_df.loc[x, "isVegOnly"] == 1:
+            zomato_banglore_2_cleaned_df.loc[x, "isVegOnly"] = "Yes"
+        elif zomato_banglore_2_cleaned_df.loc[x, "isVegOnly"] == 0:
+            zomato_banglore_2_cleaned_df.loc[x, "isVegOnly"] = "No"
 
     return zomato_banglore_2_cleaned_df
 
@@ -144,40 +165,3 @@ def data_pipeline():
 
 if __name__ == "__main__":
     data_pipeline()
-
-"""
-dataset_path = os.path.join(os.getcwd(), "data")
-# Download Zomato dataset
-kagle.api.authenticate()
-url = "https://www.kaggle.com/datasets/rajeshrampure/zomato-dataset/download?datasetVersionNumber=1"
-response = requests.head(url)
-print(response.headers.get("content-length"))
-
-# kaggle.api.dataset_download_files('rajeshrampure/zomato-dataset', path='/Users/akshatkhara/Desktop/Study Material/Semester 3/Methods of Advance Data Engineering/made-template-WS2324/data', unzip=True)
-# kaggle.api.dataset_download_files('vora1011/zomato-bangalore-restaurants-2022', path='/Users/akshatkhara/Desktop/Study Material/Semester 3/Methods of Advance Data Engineering/made-template-WS2324/data', unzip=True)
-
-
-# The dataets are stored in the repository data folder. 
-dataset1 = pd.read_csv('/Users/akshatkhara/Desktop/Study Material/Semester 3/Methods of Advance Data Engineering/made-template-WS2324/data/zomato.csv')
-dataset2 = pd.read_csv('/Users/akshatkhara/Desktop/Study Material/Semester 3/Methods of Advance Data Engineering/made-template-WS2324/data/BangaloreZomatoData.csv')
-
-# The dataset are stored in Pandas DataFrame to be later stored in SQLLite Database
-data1 = pd.DataFrame(dataset1)
-data2 = pd.DataFrame(dataset2)
-
-print(data1.head())
-
-# Connect to SQLite database
-# conn = sqlite3.connect('/Users/akshatkhara/Desktop/Study Material/Semester 3/Methods of Advance Data Engineering/made-template-WS2324/data/zomato.db')
-
-# Use the to_sql method to write the DataFrame to a SQLite table
-# data1.to_sql('accident_india', conn, index=False, if_exists='replace')
-
-#Optional selceting the query using PANDAS function to check whether the data is stored in the database.
-# query = "SELECT * FROM accident_india"
-# df = pd.read_sql_query(query, conn)
-# print(df.head())
-
-# Close the connection
-# conn.close()
-"""
