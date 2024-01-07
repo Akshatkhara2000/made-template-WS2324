@@ -4,18 +4,17 @@ import os
 import sqlite3
 import opendatasets as od
 import shutil
+import zipfile
 
 # class DataPipeline:
 
 def download_csv_files():
     dataset_path = os.path.join(os.getcwd(), "data")
-    banglore_csv = os.path.join(os.getcwd(), "data/BangaloreZomatoData.csv")
 
     # Download Zomato Dataset 1
     source_path1 = os.path.join(os.getcwd(), "zomato-dataset")
     zomato_csv = os.path.join(os.getcwd(), "data/zomato.csv")
     od.download('https://www.kaggle.com/datasets/rajeshrampure/zomato-dataset/data')
-
     # Gather all files
     allfiles = os.listdir(source_path1)
     
@@ -31,7 +30,7 @@ def download_csv_files():
 
     # Download Zomato Banglore Dataset 2
     source_path2 = os.path.join(os.getcwd(), "zomato-bangalore-restaurants-2022")
-    zomato_csv = os.path.join(os.getcwd(), "data/zomato.csv")
+    banglore_csv = os.path.join(os.getcwd(), "data/BangaloreZomatoData.csv")
     od.download('https://www.kaggle.com/datasets/vora1011/zomato-bangalore-restaurants-2022/data')
     # Gather all files
     allfiles = os.listdir(source_path2)
