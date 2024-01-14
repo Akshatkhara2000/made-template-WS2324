@@ -4,7 +4,6 @@ import os
 import sqlite3
 import opendatasets as od
 import shutil
-import zipfile
 
 # class DataPipeline:
 
