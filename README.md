@@ -21,7 +21,7 @@ The datasets used in this project are taken from Kaggle -"Zomato Dataset" and "Z
 
 ### Features
 
-1. Data Loading: Both datasets were imported into Python using Pandas, facilitating easy data manipulation within a Python environment.
+1. Data Loading: Both datasets were imported into Python using Opendatasets and Pandas, facilitating easy data manipulation within a Python environment.
 
 2. Data Cleaning: Utilized Pandas functions (Dropna, Duplicated, etc.) to clean the datasets. Addressed missing values, removed duplicates, and corrected inconsistent data.
 
