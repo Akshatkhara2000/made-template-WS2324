@@ -27,7 +27,7 @@ The datasets used in this project are taken from Kaggle -"Zomato Dataset" and "Z
 
 3. Data Transformation: Transformed specific fields, such as cleaning inconsistent data in the "Online_order" and "Book_Table" fields. Enhances data integrity for subsequent statistical analysis and visualization.
 
-### Techincal Environment
+### Techincal Requirements
 - Python
 - Database: Sqlite3
 
