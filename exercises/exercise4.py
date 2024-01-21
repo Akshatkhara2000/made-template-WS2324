@@ -14,7 +14,7 @@ def download_and_unzip(url: str) -> str:
     data_name = Path(url).stem
     extract_path = os.path.join(os.curdir, data_name)
     zip_name = data_name + '.zip'
-    # Download zip with retries
+    # Download zip
     urllib.request.urlretrieve(url, zip_name)
 
     # Check if download was successfull
