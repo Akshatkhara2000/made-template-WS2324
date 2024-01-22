@@ -54,7 +54,7 @@ if __name__ == '__main__':
         'Batterietemperatur in °C':'Batterietemperatur'
         }, inplace=True)
     
-    # Transform data
+    # Transform data according to requirements
     df['Temperatur'] = celsius_to_fahrenheit(df['Temperatur'])
     df['Batterietemperatur'] = celsius_to_fahrenheit(df['Batterietemperatur'])
     
