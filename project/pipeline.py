@@ -4,12 +4,11 @@ import os
 import sqlite3
 import opendatasets as od
 import shutil
-
+import openpyxl
 # class DataPipeline:
 
 def download_csv_files():
     dataset_path = os.path.join(os.getcwd(), "data")
-
     # Download Zomato Dataset 1
     source_path1 = os.path.join(os.getcwd(), "zomato-dataset")
     zomato_csv = os.path.join(os.getcwd(), "data/zomato.csv")
@@ -62,6 +61,7 @@ def Zomato_banglore_1(dataframe):
     zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].str.replace('/5', '')
     zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].str.replace('\W', '', regex=True)
     zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].str.replace('\D', '', regex=True)
+    zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].str[:1] + '.' + zomato_banglore_1_cleaned_df['rate'].str[1:]
     # zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].astype(int)
 
     return zomato_banglore_1_cleaned_df
@@ -71,12 +71,14 @@ def Zomato_database_file(dataframe):
     # Connect to SQLite database
     Sqlfilepath = os.path.join(os.getcwd(), "data", "Zomato.sqlite")
     conn = sqlite3.connect(Sqlfilepath)
+    # Use to_excel method to write the Dataframe to a excel file
+    dataset_path = os.path.join(os.getcwd(), "data", "zomato.xlsx")
+    Zomato_banglore_cleaned.to_excel(dataset_path, index=False)
     # Use the to_sql method to write the DataFrame to a SQLite table
     Zomato_banglore_cleaned.to_sql('Zomato', conn, index=False, if_exists='replace')
 
     # Close the connection
     conn.close()
-
 
 def Zomato_banglore_2(dataframe):
 
@@ -92,33 +94,33 @@ def Zomato_banglore_2(dataframe):
             zomato_banglore_2_cleaned_df.loc[x, "IsHomeDelivery"] = "Yes"
         elif zomato_banglore_2_cleaned_df.loc[x, "IsHomeDelivery"] == 0:
             zomato_banglore_2_cleaned_df.loc[x, "IsHomeDelivery"] = "No"
-    
+    zomato_banglore_2_cleaned_df.rename(columns={"IsHomeDelivery": "online_order"}, inplace=True)
     for x in zomato_banglore_2_cleaned_df.index:
         if zomato_banglore_2_cleaned_df.loc[x, "isTakeaway"] == 1:
             zomato_banglore_2_cleaned_df.loc[x, "isTakeaway"] = "Yes"
         elif zomato_banglore_2_cleaned_df.loc[x, "isTakeaway"] == 0:
             zomato_banglore_2_cleaned_df.loc[x, "isTakeaway"] = "No"
-    
+     
     for x in zomato_banglore_2_cleaned_df.index:
         if zomato_banglore_2_cleaned_df.loc[x, "isVegOnly"] == 1:
             zomato_banglore_2_cleaned_df.loc[x, "isVegOnly"] = "Yes"
         elif zomato_banglore_2_cleaned_df.loc[x, "isVegOnly"] == 0:
             zomato_banglore_2_cleaned_df.loc[x, "isVegOnly"] = "No"
 
+    zomato_banglore_2_cleaned_df.rename(columns={"AverageCost": "approx_cost(for two people)"}, inplace=True)
+    zomato_banglore_2_cleaned_df.rename(columns={"Dinner Ratings": "rate"}, inplace=True)
+    zomato_banglore_2_cleaned_df.rename(columns={"Name": "name"}, inplace=True)
+
     return zomato_banglore_2_cleaned_df
-
-    # # Remove All Numbers from Strings
-    # zomato_banglore_2_cleaned_df['my_column'] = zomato_banglore_2_cleaned_df['my_column'].str.replace('\d+', '', regex=True)
-
-    # # Remove Special Characters
-    # zomato_banglore_2_cleaned_df['my_column'] = zomato_banglore_2_cleaned_df['my_column'].str.replace('\W', '', regex=True)
-
     
 def Zomato_database_file_2(dataframe):
     Zomato_banglore_cleaned = dataframe
     # Connect to SQLite database
     Sqlfilepath = os.path.join(os.getcwd(), "data", "Banglore.sqlite")
     conn = sqlite3.connect(Sqlfilepath)
+    # Use to_excel method to write the Dataframe to a excel file
+    dataset_path = os.path.join(os.getcwd(), "data", "zomato_banglore.xlsx")
+    Zomato_banglore_cleaned.to_excel(dataset_path, index=False)
     # Use the to_sql method to write the DataFrame to a SQLite table
     Zomato_banglore_cleaned.to_sql('Banglore', conn, index=False, if_exists='replace')
 
