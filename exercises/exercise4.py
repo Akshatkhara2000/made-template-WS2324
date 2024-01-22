@@ -8,7 +8,7 @@ import zipfile
 import pandas as pd
 from sqlalchemy import BIGINT, FLOAT, TEXT
 
-
+# Download the dataset and unzip
 def download_and_unzip(url: str) -> str:
     # Filename and -path definitions
     data_name = Path(url).stem

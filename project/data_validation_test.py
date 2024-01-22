@@ -4,7 +4,6 @@ import os
 import re
 import sqlite3
 import opendatasets as od
-import ipdb
 
 # class Test:
 def Test_file(Sqlfilepath, tablename):
