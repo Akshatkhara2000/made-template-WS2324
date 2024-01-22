@@ -17,7 +17,7 @@ def download_and_unzip(url: str) -> str:
     # Download zip
     urllib.request.urlretrieve(url, zip_name)
 
-    # Check if download was successfull
+    # Check if download is successfull
     if not os.path.exists(zip_name):
         raise FileNotFoundError(f'Failed to load zip from url {url}')
     # Extract and delete zip file
@@ -27,15 +27,12 @@ def download_and_unzip(url: str) -> str:
     # Return path to extracted data
     return extract_path
 
-
 def validate(df: pd.DataFrame, column: str, constraint: Callable[[Any], bool]) -> pd.DataFrame:
     df = df.loc[df[column].apply(constraint)]
     return df
 
-
 def celsius_to_fahrenheit(temp_cels: float) -> float:
     return (temp_cels * 9/5) + 32
-
 
 if __name__ == '__main__':
     zip_url = 'https://www.mowesta.com/data/measure/mowesta-dataset-20221107.zip'
