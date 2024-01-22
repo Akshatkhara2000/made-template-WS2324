@@ -44,7 +44,7 @@ if __name__ == '__main__':
     # Download and unzip data
     data_path = download_and_unzip(zip_url)
     
-    # Read and reshape data
+    # Read and restructure data
     df = pd.read_csv(os.path.join(data_path, data_filename),
                      sep=';',
                      index_col=False,
