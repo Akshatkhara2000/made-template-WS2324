@@ -62,6 +62,8 @@ def Zomato_banglore_1(dataframe):
     zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].str.replace('\W', '', regex=True)
     zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].str.replace('\D', '', regex=True)
     zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].str[:1] + '.' + zomato_banglore_1_cleaned_df['rate'].str[1:]
+    zomato_banglore_1_cleaned_df = zomato_banglore_1_cleaned_df[~zomato_banglore_1_cleaned_df['rate'].str.contains('^\.+$')]
+
     # zomato_banglore_1_cleaned_df['rate'] = zomato_banglore_1_cleaned_df['rate'].astype(int)
 
     return zomato_banglore_1_cleaned_df
